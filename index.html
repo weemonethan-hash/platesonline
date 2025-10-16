@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>UK Plates Manager</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main>
+    <h1>UK Licence Plates — GitHub-backed</h1>
+
+    <section id="config">
+      <h2>Repository & Authentication</h2>
+      <div class="row">
+        <label>Repo owner: <input id="repoOwner" placeholder="username or org" /></label>
+        <label>Repo name: <input id="repoName" placeholder="repository-name" /></label>
+        <label>Branch: <input id="repoBranch" placeholder="main" value="main" /></label>
+      </div>
+      <div class="row">
+        <label>Personal Access Token: <input id="token" type="password" placeholder="paste PAT (repo scope)" /></label>
+        <button id="saveConfig">Save config</button>
+      </div>
+      <p class="note">The token is stored in localStorage for convenience. See README for security notes.</p>
+    </section>
+
+    <section id="add">
+      <h2>Add / Lookup Plate</h2>
+      <div class="row">
+        <label>Plate: <input id="plateInput" placeholder="AB12CDE or AB12 CDE" /></label>
+        <button id="lookupBtn">Lookup</button>
+        <button id="addBtn">Add / Save</button>
+      </div>
+      <div id="plateDetails" class="card hidden">
+        <h3>Plate details</h3>
+        <label>Normalized plate: <input id="normPlate" readonly /></label>
+        <label>Owner / Details: <input id="owner" placeholder="optional details you want to save" /></label>
+        <label>Notes: <input id="notes" placeholder="notes" /></label>
+        <label>Flagged: <input id="flagged" type="checkbox" /></label>
+        <label>Flag reason: <input id="flagReason" placeholder="reason" /></label>
+        <div class="row">
+          <button id="savePlateBtn">Save / Update Plate</button>
+          <button id="clearForm">Clear</button>
+        </div>
+        <p id="status" class="status"></p>
+      </div>
+    </section>
+
+    <section id="list">
+      <h2>Saved plates</h2>
+      <div class="row">
+        <button id="refreshList">Refresh list</button>
+        <input id="search" placeholder="Filter plates (substring)" />
+      </div>
+      <ul id="platesList" class="plates"></ul>
+    </section>
+
+    <footer>
+      <small>Built for quick demo. See README for setup & security guidance.</small>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
